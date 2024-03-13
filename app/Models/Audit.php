@@ -17,6 +17,10 @@ class Audit extends Model
         'ip_address',
     ];
 
+    protected $hidden = [
+        'ip_address'
+    ];
+
     public function user() {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }

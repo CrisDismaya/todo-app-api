@@ -12,7 +12,17 @@ use App\Models\Task;
 class TaskController extends Controller
 {
     public function index(){
-        $task = Task::all();
+        $auth = Auth::user();
+        $task = Task::where('user_id', $auth->id)->get();
+
+        return response()->json([
+            'task' => $task,
+        ], 201);
+    }
+
+    public function trash(){
+        $auth = Auth::user();
+        $task = Task::where('user_id', $auth->id)->onlyTrashed()->get();
 
         return response()->json([
             'task' => $task,
@@ -52,7 +62,7 @@ class TaskController extends Controller
     }
 
     public function show($id){
-        $task = Task::find($id);
+        $task = Task::where('id', $id)->withTrashed()->first();
 
         return response()->json([
             'task' => $task

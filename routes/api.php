@@ -30,14 +30,15 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', [UserController::class, 'index']);
     Route::put('/user/access', [UserController::class, 'access']);
 
-
     Route::get('/task', [TaskController::class, 'index']);
+    Route::get('/task/trash', [TaskController::class, 'trash']);
     Route::post('/task/create', [TaskController::class, 'store']);
     Route::post('/task/{id}', [TaskController::class, 'update']);
     Route::delete('/task/{id}', [TaskController::class, 'delete']);
     Route::delete('/task/image/{id}', [TaskController::class, 'deleteImage']);
     Route::delete('/task/subtask/{id}', [TaskController::class, 'deleteSubtask']);
     Route::get('/task/{id}', [TaskController::class, 'show']);
+
 });
 
 // public access
