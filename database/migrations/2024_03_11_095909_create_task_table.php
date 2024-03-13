@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('content');
             $table->json('attachment')->nullable();
+            $table->json('subtask')->nullable();
             $table->enum('status', [0, 1, 2])->default(0); // (0:to-do, 1:in-progress, 2:done)
             $table->boolean('is_published')->default(true); // (1:true, 0:false)
             $table->timestamps();

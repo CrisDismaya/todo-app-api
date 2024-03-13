@@ -41,6 +41,7 @@ class TaskController extends Controller
             'title' => $request->title,
             'content' => $request->content,
             'attachment' => json_encode($attachments),
+            'subtask' => $request->subtask,
             'status' => $request->status,
             'is_published' => $request->is_published,
         ]);
@@ -90,6 +91,7 @@ class TaskController extends Controller
             'title' => $request->title,
             'content' => $request->content,
             'attachment' => json_encode($attachments),
+            'subtask' => $request->subtask,
             'status' => $request->status,
             'is_published' => $request->is_published,
         ]);
@@ -128,7 +130,30 @@ class TaskController extends Controller
         ]);
 
         return response()->json([
-            'task' => $updatedAttactment,
+            'task' => $task,
+        ], 201);
+    }
+
+    public function deleteSubtask(Request $request, $id){
+        $task = Task::find($id);
+
+        $updatedSubtask = [];
+        $subtask = json_decode($task->subtask);
+        for ($i = 0; $i < count($subtask); $i++) {
+            if($i != $request->deletedIndex){
+                $updatedSubtask[] = [
+                    'name' => $subtask[$i]->name,
+                    'is_done' => $subtask[$i]->is_done
+                ];
+            }
+        }
+
+        $task->update([
+            'subtask' => json_encode($updatedSubtask)
+        ]);
+
+        return response()->json([
+            'task' => $task,
         ], 201);
     }
 }

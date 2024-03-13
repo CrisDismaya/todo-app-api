@@ -42,6 +42,7 @@ class TaskRequest extends FormRequest
             'title' => 'required|string|max:100|unique:tasks,title,'. $taskId,
             'content' => 'required|string',
             'attachment' => 'nullable',
+            'subtask' => 'nullable',
             'status' => 'required|in:0,1,2',
             'is_published' => 'required|boolean',
         ];

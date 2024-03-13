@@ -22,6 +22,7 @@ class Task extends Model
         'title',
         'content',
         'attachment',
+        'subtask',
         'status',
         'is_published',
     ];
