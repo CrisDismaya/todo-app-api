@@ -26,7 +26,7 @@ class TaskController extends Controller
         if ($request->hasFile('attachment')) {
             foreach ($request->file('attachment') as $file) {
                 $originalName = $file->getClientOriginalName();
-                $path = $file->store('public/uploads');
+                $path = $file->store('public');
                 $size = $file->getSize();
                 $attachments[] = [
                     'name' => $originalName,
