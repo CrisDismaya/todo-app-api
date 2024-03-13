@@ -13,7 +13,7 @@ These instructions will help you set up and run the project locally on your mach
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/CrisDismaya/chat-app-api.git && cd chat-app-api
+   git clone https://github.com/CrisDismaya/todo-app-api.git && cd todo-app-api
    ```
 2. Install Composer
    ```sh
