@@ -11,7 +11,7 @@ These instructions will help you set up and run the project locally on your mach
 
 ### Installation
 
-1. Clone the repo
+1. Extract zip file
    ```sh
    git clone https://github.com/CrisDismaya/todo-app-api.git && cd todo-app-api
    ```
